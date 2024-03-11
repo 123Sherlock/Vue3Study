@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用v-model实现视图和数据的双向绑定 -->
+        <!-- 即视图发生变化时，数据被改变，数据发生变化时，视图也被改变 -->
+        分类：<input type="text" v-model="searchConditions.catagory"> <span>{{searchConditions.catagory}}</span>
+        状态: <input type="text" v-model="searchConditions.state"> <span>{{searchConditions.state}}</span>
+
+        <button>搜索</button> &nbsp;
+        <button @click="reset">重置</button>
+
+        <br>
+        <br>
+
+        <table border="1 solid" cellspacing="0">
+            <tr v-for="(article, index) in articleList">
+                <td>{{article.title}}</td>
+                <td>{{article.time}}</td>
+                <td>{{article.state}}</td>
+                <td>
+                    <button>编辑</button>
+                    <button>删除</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        createApp({
+            data() {
+                return {
+                    searchConditions: {
+                        catagory: '',
+                        state: ''
+                    },
+
+                    articleList: [{
+                        title: "标题1",
+                        time: "2024-01-01",
+                        state: "已发布"
+                    },
+                    {
+                        title: "标题2",
+                        time: "2024-02-02",
+                        state: "审核中"
+                    },
+                    {
+                        title: "标题3",
+                        time: "2024-03-03",
+                        state: "草稿"
+                    },
+                    ]
+                }
+            },
+            methods: {
+                reset: function () {
+                    // 在methods里this代表的是Vue实例，可以获取到data中的数据
+                    this.searchConditions.catagory = '';
+                    this.searchConditions.state = '';
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

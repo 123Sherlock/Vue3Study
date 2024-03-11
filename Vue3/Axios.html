@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Axios是对Ajax的封装-->
+    <!-- 从官网axios-http.cn获取unpkg的CDN地址 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        // 向服务器发送请求
+        axios({
+            method: 'get',
+            url: 'http://localhost:8080/article/getAll'
+        }).then(result => {
+            // 成功的回调，result包含了响应头，响应体等全部数据，data是核心数据
+            console.log(result.data);
+        }
+        ).catch(err => {
+            // 失败的回调
+            console.log(err);
+        });
+        // 上面的代码可以简化为
+        axios.get('http://localhost:8080/article/getAll')
+            .then(result => {
+                console.log(result.data);
+            }
+            ).catch(err => {
+                console.log(err);
+            });
+
+        // 定义数据
+        let article = {
+            title: '标题',
+            time: '2024-01-01',
+            state: '草稿'
+        }
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/article/add',
+            data: article
+        }).then(result => {
+            console.log(result.data);
+        }).catch(err => {
+            console.log(err);
+        });
+        // 上面的代码可以简化为
+        axios.post('http://localhost:8080/article/add', article)
+            .then(result => {
+                console.log(result.data);
+            }).catch(err => {
+                console.log(err);
+            });
+    </script>
+</body>
+
+</html>

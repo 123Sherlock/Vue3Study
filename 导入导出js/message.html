@@ -1,0 +1,42 @@
+<!-- 输入感叹号回车，可以在编辑器中快速生成html模板 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js导入导出</title>
+</head>
+
+<body>
+    <div id="app">
+        <button id="btn">点我展示信息</button>
+    </div>
+
+    <!-- 导入js的全部内容 -->
+    <!-- <script src="showMessage.js"></script> -->
+
+    <!-- 使用module的方式来局部导入js，不需把整个js文件导入 -->
+    <script type="module">
+        // 通过import关键字导入js里的函数
+        // import { complextMessage } from './showMessage.js';
+        // document.getElementById("btn").onclick = function() {
+        //     complextMessage('我被点击了');
+        // }
+
+        // // 可使用as关键字指定别名
+        // import { complextMessage as cm } from './showMessage.js';
+        // document.getElementById("btn").onclick = function() {
+        //     cm('我被点击了');
+        // }
+
+        // 以默认的方式导入，在js里需要用export default的方式导出
+        import messageMethods from './showMessage.js';
+        document.getElementById("btn").onclick = function () {
+            messageMethods.complextMessage('我被点击了');
+            messageMethods.simpleMessage('我被点击了');
+        }
+    </script>
+</body>
+
+</html>

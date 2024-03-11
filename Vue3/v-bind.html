@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用v-bind绑定新的属性 -->
+        <!-- v-bind:属性名:="属性值" -->
+        <a v-bind:href="url">百度</a>
+        <!-- 也可以省略掉v-bind简化写法 -->
+        <a :href="url">百度</a>
+    </div>
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        createApp({
+            data() {
+                return {
+                    url: 'https://www.baidu.com'
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 通过v-on来绑定函数 -->
+        <!-- v-on:事件名="函数名" -->
+        <button v-on:click="money">点我</button> &nbsp;
+        <!-- 可以把v-on:简化为@ -->
+        <button @click="love">再点</button>
+    </div>
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        createApp({
+            data() {
+                return {}
+            },
+            methods: {
+                // v-on绑定的函数必须定义在这里
+                money: function () {
+                    alert('发达')
+                },
+                love: function () {
+                    alert('爱情')
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

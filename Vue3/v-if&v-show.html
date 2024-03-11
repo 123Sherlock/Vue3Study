@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        价格：
+        <!-- 通过v-if v-else-if v-else做条件判断 -->
+        <!-- 相邻的表达式会连在一起生效 -->
+        <!-- 判断结果为false时html元素不会创建 -->
+        <span v-if="customer.level >= 0 && customer.level <= 1">9.9</span>
+        <span v-else-if="customer.level >= 2 && customer.level <= 5">99.9</span>
+        <span v-else>999.9</span>
+
+        <br>
+
+        价格：
+        <!-- v-show的用法和v-if类似 -->
+        <!-- 判断结果为false时，会创建html元素，并添加style="display: none;" -->
+        <!-- 适用于显示与隐藏频繁的场景 -->
+        <span v-show="customer.level >= 0 && customer.level <= 1">9.9</span>
+        <span v-show="customer.level >= 2 && customer.level <= 5">99.9</span>
+        <span v-show="customer.level >= 6">999.9</span>
+    </div>
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        createApp({
+            data() {
+                return {
+                    customer: {
+                        name: '张三',
+                        level: 6
+                    }
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

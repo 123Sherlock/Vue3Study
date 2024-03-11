@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+    </div>
+
+    <!-- 引入Vue模块 -->
+    <!-- 去Vue的官网cn.vuejs.org可以找到引入地址 -->
+    <!-- 不推荐使用CDN的方式引入，因为会引入所有js-->
+    <!-- 推荐使用ES模块的方式引入，从官网复制地址 -->
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        // 创建Vue的应用实例
+        createApp({
+            data() {
+                return {
+                    // 定义数据，再通过插值表达式{{}}插入到页面中
+                    msg: 'Hello Vue3'
+                }
+            }
+        }).mount("#app"); // 挂载到指定id的div上
+    </script>
+</body>
+
+</html>
